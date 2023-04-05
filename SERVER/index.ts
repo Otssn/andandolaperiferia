@@ -1,21 +1,27 @@
 //Importamos expresss
-import express from 'express';
+import express, {RequestHandler} from 'express';
+import bodyParser from 'body-parser';
 import cors from 'cors';
 import mongoose, {ConnectOptions} from 'mongoose';
+import { connection } from './connections/conectionDB';
+import municipioRoutes from './routes/municipio.route';
+
 
 //Inicializo el exprres
 
 const app = express();
 app.use(cors());
 
-const conf: any = {
-    MONGO_URI:  'mongodb://127.0.0.1:27017/periferia',
-    PORT: +process.env.PORT!
-}
+// Body parser
+app.use(bodyParser.urlencoded({ limit: '10000kb', extended: true }) as RequestHandler);
+app.use(bodyParser.json({ limit: '10000kb' }) as RequestHandler);
+app.use('/municipio', municipioRoutes);
 
 
-mongoose.connect(conf.MONGO_URI)
-    .then(() => console.log('Conectado a la base de datos'));
+
+connection.then((db) => {
+    console.log('Base de datos conectada');
+}).catch((err) => {});
 
 const PORT = 5000;
 
