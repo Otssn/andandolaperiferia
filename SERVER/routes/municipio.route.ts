@@ -5,7 +5,7 @@ const controllerMunicipio = new municipioController();
 const municipioRoutes = Router();
 
 municipioRoutes.post('/crear', controllerMunicipio.crearMunicipio);
-//municipioRoutes.get('/listar', controllerMunicipio.listarMunicipio);
+municipioRoutes.get('/listar', controllerMunicipio.listarMunicipio);
 
 export default municipioRoutes;
 

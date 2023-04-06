@@ -24,4 +24,21 @@ export default class municipioData {
         return response;
 
     }
+
+    public static async listarMunicipio(): Promise<IResponseData> {
+        const res: IResponseData = {
+            data: null,
+            error: false
+        }
+
+        try {
+
+            res.data = await MunicipioSchema.find({});
+
+        } catch(error) {
+            res.error = true;
+            res.data = error;
+        }
+        return res;
+    }
 }
