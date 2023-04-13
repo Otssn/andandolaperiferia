@@ -5,6 +5,7 @@ import cors from 'cors';
 import mongoose, {ConnectOptions} from 'mongoose';
 import { connection } from './connections/conectionDB';
 import municipioRoutes from './routes/municipio.route';
+import usuarioRoutes from './routes/usuario.route';
 
 
 //Inicializo el exprres
@@ -16,6 +17,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ limit: '10000kb', extended: true }) as RequestHandler);
 app.use(bodyParser.json({ limit: '10000kb' }) as RequestHandler);
 app.use('/municipio', municipioRoutes);
+app.use('/usuario', usuarioRoutes)
 
 
 
