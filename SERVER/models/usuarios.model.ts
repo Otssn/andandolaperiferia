@@ -23,4 +23,4 @@ const usuarioSchema = new Schema({
         type: Number,
         require: true
     }
-});
+},{timestamps:{currentTime:()=>DateTime.local().toUTC().toMillis()}});
