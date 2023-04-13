@@ -24,3 +24,5 @@ const usuarioSchema = new Schema({
         require: true
     }
 },{timestamps:{currentTime:()=>DateTime.local().toUTC().toMillis()}});
+
+export const UsuarioSchema = model('Usuario', usuarioSchema);
